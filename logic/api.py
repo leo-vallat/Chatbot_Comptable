@@ -1,15 +1,11 @@
 import joblib
 import json
-import jwt
 import numpy as np
-import os
 import random
 import spacy
-import traceback
-from datetime import datetime, timedelta, UTC
+from datetime import datetime, UTC
 from flask import Flask, jsonify, request
 from keras.models import load_model
-from sklearn.feature_extraction.text import CountVectorizer
 
 from logic.config import Config
 from logic.model.model_utils import preprocess_token, is_token_allowed
@@ -25,33 +21,27 @@ class ChatbotAPI:
         self.load_ressources()
 
     def load_ressources(self):
-        """"""
+        """Charge le vectoriseur, l'encodeur et le modèle."""
         try:
             self.vectorizer = joblib.load(f"./logic/model/{Config.VECTORIZER_NAME}.joblib")
             self.encoder = joblib.load(f"./logic/model/{Config.ENCODER_NAME}.joblib")
             self.model = load_model(f"./logic/model/{Config.MODEL_NAME}.keras")
             with open(Config.INTENTS_PATH, 'r') as f:
                 self.intents = json.load(f)['intents'] 
-
-            print(f"Nombre d'intents chargés : {len(self.intents)}")
-            print(f"Classes reconnues par le modèle : {len(self.encoder.classes_)}")
-
             return True
         
         except Exception as e:
             print(f"Erreur lors du chargement : {e}")
-            traceback.print_exc()
             return False
 
-
     def _register_routes(self):
-        """Enregistre les endpoints de l'API"""
+        """Enregistre les endpoints de l'API."""
         self.app.add_url_rule('/health', 'health_check', self.health_check, methods=['GET'])
         self.app.add_url_rule('/process_prediction', 'process_prediction', self.process_prediction, methods=['POST'])
         self.app.add_url_rule('/reload_model', 'reload_model', self.reload_model, methods=['POST'])
 
     def health_check(self):
-        """Endpoint pour le service de test de santé"""
+        """Endpoint pour vérifié l'état du serveur."""
         return jsonify({
             "status": "OK",
             "message": "Service operational",
@@ -59,7 +49,7 @@ class ChatbotAPI:
         }), 200
 
     def process_prediction(self):
-        """Endpoint pour exécuter le chatbot"""
+        """Endpoint pour exécuter le chatbot."""
         try:
             payload = request.get_json()
             text = payload.get("text", None)
@@ -118,6 +108,7 @@ class ChatbotAPI:
         }
 
     def reload_model(self):
+        """Endpoint pour recharger le modèle après un entrainement."""
         success = self.load_ressources()
 
         if success:

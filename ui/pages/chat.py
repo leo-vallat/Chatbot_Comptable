@@ -4,14 +4,14 @@ from logic.config import Config
 from ui.utils import initialize_session_state
 
 def test_api_health():
-    """"""
+    """Envoi une requête à l'endpoint 'health' et affiche un avertissement s'il y a une erreur."""
     try:
         requests.post(f'{Config.API_URL}/health')
     except Exception:
         st.warning("le serveur n'est pas allumé !", icon="⚠️")
 
 def display_conversation():
-    """"""
+    """Affiche les messages dans un container."""
     with st.container(border=True, height=600):
         if not st.session_state.messages:
             st.write("💬 Démarrez une nouvelle conversation !")
@@ -21,7 +21,7 @@ def display_conversation():
                 st.write(text)
 
 def display_input():
-    """"""
+    """affiche l'espace de saisie du chat et le bouton de reset."""
     col1, col2 = st.columns([12,1])
     with col1:
         st.chat_input('Écrivez un message ...', key='chat_input', on_submit=process_submitting)
@@ -29,18 +29,16 @@ def display_input():
         st.button("🗑️", key='reset_btn', on_click=reset_conversation)
 
 def process_submitting():
-    """"""
+    """S'il y a un prompt, appel l'api et affiche la réponse."""
     prompt = st.session_state.chat_input.strip()
     if not prompt:
         return
-    
     st.session_state.messages.append(('user', prompt))
-    
     answer = call_api(prompt)
     st.session_state.messages.append(('assistant', answer))
 
 def call_api(prompt):
-    """"""
+    """Effectue une requête vers l'endpoint 'process_prediction'."""
     try:
         response = requests.post(f'{Config.API_URL}/process_prediction', json={'text': prompt})
         if response.status_code == 200:
@@ -53,13 +51,11 @@ def call_api(prompt):
 
     return answer
 
-
 def reset_conversation():
-    """"""
+    """Efface les messages de la conversation."""
     st.session_state.messages = []
 
 def main():
-    """"""
     initialize_session_state()
 
     test_api_health()

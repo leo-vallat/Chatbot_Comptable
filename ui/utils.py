@@ -3,7 +3,7 @@ import os
 import streamlit as st
 
 def initialize_session_state():
-    """"""
+    """Initialise les valeurs du st.session_state au démarrage de l'app."""
     default_values = {
         "messages" : [],
         "kb_saved" : False,
@@ -20,7 +20,7 @@ def update_navigation():
     st.session_state.navigation = st.session_state.menu_value
 
 def load_json_file(json_path):
-    """"""
+    """Charge le contenu du json."""
     try: 
         os.path.exists(json_path)
     except Exception as e:    
@@ -30,7 +30,7 @@ def load_json_file(json_path):
             return json.load(file)
 
 def save_in_json(json_path, data):
-    """"""
+    """Dump data dans le json."""
     try:
         os.path.exists(json_path)
     except Exception as e:

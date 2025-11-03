@@ -13,9 +13,7 @@ from logic.model.model_utils import preprocess_token, is_token_allowed
 
 
 class ChatbotTrainer:
-    """"""
     def __init__(self):
-        """"""
         with open(Config.INTENTS_PATH, 'r') as f:
             self.intents = json.load(f)['intents']
         self.vectorizer = CountVectorizer(binary=True)
