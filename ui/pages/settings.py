@@ -7,11 +7,10 @@ from logic.model.train_model import ChatbotTrainer
 from ui.utils import initialize_session_state, load_json_file, save_in_json
 
 def render_top_of_page():
-    """"""
-    st.header("🧠 Base de connaissance du chatbot")
+    """Affiche les widgets du haut de la page."""
+    st.header("🧠 Base de connaissance du chatbot", )
 
-    st.markdown("*Visualisez et modifiez les intents (tags, patterns, responses).*")
-
+    st.space("small")
     # Style pour agrandir les dialogs
     st.markdown("""
         <style>
@@ -21,12 +20,17 @@ def render_top_of_page():
         </style>
     """, unsafe_allow_html=True)
 
-    _, col_btn, _ = st.columns([3, 2, 3])
-    col_btn.button("➕ Ajouter un tag", use_container_width=True, on_click=open_tag_dialog)
+    _, col_retrain_btn, _, col_add_btn, _ = st.columns([3, 3, 1, 3, 3])
+    col_retrain_btn.button("Entrainer le modèle", icon="🚀", use_container_width=True, on_click=retrain_model)
+    col_add_btn.button("Ajouter un tag", icon="➕", use_container_width=True, on_click=open_tag_dialog)
+
+    st.space('small')
+    st.markdown("*Visualisez et modifiez les intents (tags, patterns, responses).*")
+
 
 
 def render_intents():
-    """"""
+    """Affiche les intents et les boutons pour les modifier / supprimer."""
     intents = load_json_file(Config.INTENTS_PATH)['intents']
     
     if not intents:
@@ -44,14 +48,14 @@ def render_intents():
             for response in intent['responses']:
                 st.markdown(f"- {response}")
 
-        edit_col, del_col = st.columns([1, 1])
-        with edit_col:
-            st.button("✏️ Modifier", key=f"edit_intent_btn_{i}", on_click=open_tag_dialog, args=('edit', intent))
-        with del_col:
-            st.button("🗑️ Supprimer", key=f"delete_intent_btn_{i}", on_click=delete_intent, args=[intent['tag']])
+        with st.container(horizontal=True):
+            st.button("✏️", key=f"edit_intent_btn_{i}", type='tertiary', on_click=open_tag_dialog, args=('edit', intent))
+            st.button("🗑️", key=f"delete_intent_btn_{i}", type='tertiary', on_click=delete_intent, args=[intent['tag']])
+            st.space('stretch')
 
 @st.dialog("Modifier la base de connaissance")
 def open_tag_dialog(mode='create', intent=None):
+    """Ouvre une pop up pour créer ou modifier un intent."""
     st.html("<span class='big-dialog'></span>")
 
     if mode=='edit' and intent:
@@ -79,7 +83,7 @@ def open_tag_dialog(mode='create', intent=None):
         st.rerun()
 
 def save_intent(tag_name, patterns, responses, mode, old_intent=None):
-    """"""
+    """Sauvegarder les intents dans le fichier intents.json"""
     intents = load_json_file(Config.INTENTS_PATH)['intents']
 
     new_intent = {
@@ -103,7 +107,7 @@ def save_intent(tag_name, patterns, responses, mode, old_intent=None):
         retrain_model()    
 
 def delete_intent(tag):
-    """"""
+    """Supprime un intent du fichier."""
     intents = load_json_file(Config.INTENTS_PATH)['intents']
     intents = [i for i in intents if i['tag'] != tag]
     data = {'intents': intents}
@@ -115,7 +119,7 @@ def delete_intent(tag):
     st.toast(f"✅ Tag '{tag}' supprimé !")
 
 def retrain_model():
-    """"""
+    """Lance un entrainement du réseau de neurone et le recharge."""
     try:
         trainer = ChatbotTrainer()
         sentences, tags = trainer.prepare_intents()
@@ -130,7 +134,7 @@ def retrain_model():
         print(e)
     
 def reload_model():
-    """"""
+    """Appel l'endpoint 'reload model' pour recharger le nouveau modèle."""
     try:
         success = requests.post(f'{Config.API_URL}/reload_model')
         if success.status_code == 200:
@@ -140,7 +144,7 @@ def reload_model():
         print(e)
 
 def display_messages():
-    """"""
+    """Affiche les messages de succès."""
     if st.session_state.kb_saved:
         st.toast("✅ Base de connaissance mise à jour !")
         st.session_state.kb_saved = False
