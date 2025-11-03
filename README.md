@@ -36,7 +36,7 @@ Le projet se compose d'un dossier logic - contenant l'ensemble du backend - et d
 ## Installation
 ### Cloner le dépot Git 
 ````
-git clone 
+git clone https://github.com/leo-vallat/Chatbot_Comptable.git
 ````
 ### Créer un environnement virtuel
 ````
