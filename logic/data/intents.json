@@ -1,0 +1,222 @@
+{
+    "intents": [
+        {
+            "tag": "salutation",
+            "patterns": [
+                "bonjour",
+                "salut",
+                "coucou",
+                "hey",
+                "allo",
+                "hello"
+            ],
+            "responses": [
+                "Bonjour ! Comment puis-je vous aider aujourd\u2019hui ?",
+                "Salut ! Vous avez une question en comptabilit\u00e9 ?",
+                "Bonjour ! Je suis l\u00e0 pour r\u00e9pondre \u00e0 vos questions comptables."
+            ]
+        },
+        {
+            "tag": "au revoir",
+            "patterns": [
+                "au revoir",
+                "bonne journ\u00e9e",
+                "\u00e0 plus",
+                "ciao",
+                "bonne soir\u00e9e",
+                "\u00e0 bient\u00f4t"
+            ],
+            "responses": [
+                "Au revoir, \u00e0 bient\u00f4t !",
+                "Bonne journ\u00e9e !",
+                "\u00c0 la prochaine !"
+            ]
+        },
+        {
+            "tag": "identit\u00e9",
+            "patterns": [
+                "qui es-tu ?",
+                "quel est ton nom ?",
+                "comment t'appelles-tu ?",
+                "tu es qui ?",
+                "quel est ton r\u00f4le ?"
+            ],
+            "responses": [
+                "Je suis Budget, ton assistant virtuel sp\u00e9cialis\u00e9 en comptabilit\u00e9 et finance.",
+                "Je m'appelle Budget, et je suis un chatbot expert en comptabilit\u00e9."
+            ]
+        },
+        {
+            "tag": "d\u00e9finition bilan",
+            "patterns": [
+                "qu\u2019est-ce qu\u2019un bilan comptable ?",
+                "d\u00e9finis un bilan",
+                "\u00e0 quoi sert un bilan ?",
+                "explique moi le bilan comptable"
+            ],
+            "responses": [
+                "Le bilan comptable est un document qui pr\u00e9sente le patrimoine de l\u2019entreprise \u00e0 une date donn\u00e9e. Il se compose de l\u2019actif (ce que poss\u00e8de l\u2019entreprise) et du passif (ce qu\u2019elle doit).",
+                "Le bilan comptable refl\u00e8te la situation financi\u00e8re d\u2019une entreprise \u00e0 un moment pr\u00e9cis : actif = passif + capitaux propres."
+            ]
+        },
+        {
+            "tag": "d\u00e9finition compte r\u00e9sultat",
+            "patterns": [
+                "qu\u2019est-ce qu\u2019un compte de r\u00e9sultat ?",
+                "\u00e0 quoi sert le compte de r\u00e9sultat ?",
+                "explique le compte de r\u00e9sultat"
+            ],
+            "responses": [
+                "Le compte de r\u00e9sultat pr\u00e9sente les produits et les charges d\u2019une entreprise sur une p\u00e9riode donn\u00e9e pour d\u00e9terminer le b\u00e9n\u00e9fice ou la perte.",
+                "C\u2019est un document comptable qui montre la performance \u00e9conomique d\u2019une entreprise sur un exercice."
+            ]
+        },
+        {
+            "tag": "amortissement lin\u00e9aire",
+            "patterns": [
+                "comment calculer l\u2019amortissement lin\u00e9aire ?",
+                "amortissement lin\u00e9aire exemple",
+                "formule de l\u2019amortissement lin\u00e9aire",
+                "calcul de l\u2019amortissement d\u2019un bien"
+            ],
+            "responses": [
+                "L\u2019amortissement lin\u00e9aire se calcule ainsi : valeur d\u2019acquisition \u00d7 (1 / dur\u00e9e d\u2019utilisation). Exemple : pour un bien de 10 000 \u20ac amorti sur 5 ans, l\u2019amortissement annuel est de 2 000 \u20ac.",
+                "Formule : Amortissement annuel = (Valeur d\u2019achat - Valeur r\u00e9siduelle) / Dur\u00e9e d\u2019amortissement."
+            ]
+        },
+        {
+            "tag": "charges fixes variables",
+            "patterns": [
+                "quelle est la diff\u00e9rence entre charges fixes et charges variables ?",
+                "charges fixes vs charges variables",
+                "exemples de charges fixes",
+                "exemples de charges variables"
+            ],
+            "responses": [
+                "Les charges fixes ne varient pas avec le niveau d\u2019activit\u00e9 (ex : loyers, salaires). Les charges variables d\u00e9pendent du volume d\u2019activit\u00e9 (ex : mati\u00e8res premi\u00e8res, \u00e9lectricit\u00e9).",
+                "Les charges fixes sont stables, alors que les charges variables \u00e9voluent selon la production ou les ventes."
+            ]
+        },
+        {
+            "tag": "tva",
+            "patterns": [
+                "qu\u2019est-ce que la TVA ?",
+                "comment fonctionne la TVA ?",
+                "quelle est la formule de la TVA ?",
+                "TVA d\u00e9ductible et collect\u00e9e"
+            ],
+            "responses": [
+                "La TVA (Taxe sur la Valeur Ajout\u00e9e) est un imp\u00f4t sur la consommation. L\u2019entreprise collecte la TVA sur ses ventes et d\u00e9duit la TVA sur ses achats.",
+                "TVA \u00e0 payer = TVA collect\u00e9e - TVA d\u00e9ductible."
+            ]
+        },
+        {
+            "tag": "journal comptable",
+            "patterns": [
+                "qu\u2019est-ce qu\u2019un journal comptable ?",
+                "\u00e0 quoi sert le journal comptable ?",
+                "comment enregistrer une \u00e9criture dans le journal ?"
+            ],
+            "responses": [
+                "Le journal comptable est un registre o\u00f9 l\u2019on enregistre chronologiquement toutes les op\u00e9rations comptables (achats, ventes, paiements...).",
+                "Chaque \u00e9criture comptable y est inscrite avec une date, un libell\u00e9, un d\u00e9bit et un cr\u00e9dit."
+            ]
+        },
+        {
+            "tag": "plan comptable",
+            "patterns": [
+                "qu\u2019est-ce que le plan comptable ?",
+                "\u00e0 quoi sert le plan comptable ?",
+                "expliquer le plan comptable"
+            ],
+            "responses": [
+                "Le plan comptable g\u00e9n\u00e9ral (PCG) est une classification normalis\u00e9e des comptes utilis\u00e9e par les entreprises fran\u00e7aises pour enregistrer leurs op\u00e9rations.",
+                "Il permet d\u2019assurer une coh\u00e9rence et une uniformit\u00e9 dans la tenue des comptes."
+            ]
+        },
+        {
+            "tag": "compte tiers",
+            "patterns": [
+                "qu\u2019est-ce qu\u2019un compte tiers ?",
+                "que signifie compte client ou fournisseur ?",
+                "explique le compte tiers"
+            ],
+            "responses": [
+                "Les comptes tiers regroupent les comptes des partenaires externes de l\u2019entreprise : clients (classe 41) et fournisseurs (classe 40).",
+                "Un compte tiers sert \u00e0 enregistrer les cr\u00e9ances et dettes envers les tiers."
+            ]
+        },
+        {
+            "tag": "seuil rentabilit\u00e9",
+            "patterns": [
+                "qu\u2019est-ce que le seuil de rentabilit\u00e9 ?",
+                "comment calculer le seuil de rentabilit\u00e9 ?",
+                "point mort entreprise"
+            ],
+            "responses": [
+                "Le seuil de rentabilit\u00e9 est le niveau de chiffre d\u2019affaires \u00e0 partir duquel l\u2019entreprise couvre toutes ses charges et commence \u00e0 faire un b\u00e9n\u00e9fice.",
+                "Formule : Seuil de rentabilit\u00e9 = Charges fixes / Taux de marge sur co\u00fbts variables."
+            ]
+        },
+        {
+            "tag": "bilan vs r\u00e9sultat",
+            "patterns": [
+                "quelle est la diff\u00e9rence entre le bilan et le compte de r\u00e9sultat ?",
+                "bilan ou compte de r\u00e9sultat ?",
+                "diff\u00e9rence entre actif et r\u00e9sultat"
+            ],
+            "responses": [
+                "Le bilan montre la situation patrimoniale \u00e0 une date donn\u00e9e, tandis que le compte de r\u00e9sultat montre la performance sur une p\u00e9riode.",
+                "Le bilan d\u00e9crit ce que poss\u00e8de et doit l\u2019entreprise, le compte de r\u00e9sultat d\u00e9crit ce qu\u2019elle gagne ou perd."
+            ]
+        },
+        {
+            "tag": "fonds propres",
+            "patterns": [
+                "qu\u2019est-ce que les fonds propres ?",
+                "\u00e0 quoi servent les capitaux propres ?",
+                "d\u00e9finition capitaux propres"
+            ],
+            "responses": [
+                "Les fonds propres repr\u00e9sentent les ressources appartenant \u00e0 l\u2019entreprise (capital social, r\u00e9serves, r\u00e9sultat net). Ils mesurent la valeur nette de l\u2019entreprise.",
+                "Ils servent \u00e0 financer durablement l\u2019activit\u00e9 de l\u2019entreprise."
+            ]
+        },
+        {
+            "tag": "\u00e9criture comptable",
+            "patterns": [
+                "comment faire une \u00e9criture comptable ?",
+                "exemple d\u2019\u00e9criture comptable",
+                "comment passer une \u00e9criture ?"
+            ],
+            "responses": [
+                "Une \u00e9criture comptable enregistre une op\u00e9ration : chaque mouvement est inscrit \u00e0 la fois au d\u00e9bit et au cr\u00e9dit de comptes correspondants.",
+                "Exemple : achat de fournitures pour 100\u20ac TTC (TVA 20%) \u2192 D\u00e9bit : 606 Fournitures 83,33\u20ac ; 44566 TVA d\u00e9ductible 16,67\u20ac ; Cr\u00e9dit : 401 Fournisseur 100\u20ac."
+            ]
+        },
+        {
+            "tag": "analyse financi\u00e8re",
+            "patterns": [
+                "qu\u2019est-ce que l\u2019analyse financi\u00e8re ?",
+                "comment analyser un bilan ?",
+                "comment \u00e9valuer la sant\u00e9 financi\u00e8re d\u2019une entreprise ?"
+            ],
+            "responses": [
+                "L\u2019analyse financi\u00e8re consiste \u00e0 \u00e9tudier les \u00e9tats comptables (bilan, compte de r\u00e9sultat) pour \u00e9valuer la rentabilit\u00e9, la solvabilit\u00e9 et la liquidit\u00e9 d\u2019une entreprise.",
+                "Elle permet de comprendre la structure financi\u00e8re et la performance globale."
+            ]
+        },
+        {
+            "tag": "test",
+            "patterns": [
+                "test",
+                "je fais un test",
+                "lance le test",
+                "j'effectue un test"
+            ],
+            "responses": [
+                "test valid\u00e9"
+            ]
+        }
+    ]
+}
