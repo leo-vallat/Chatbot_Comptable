@@ -3,6 +3,13 @@ import streamlit as st
 from logic.config import Config
 from ui.utils import initialize_session_state
 
+def test_api_health():
+    """"""
+    try:
+        requests.post(f'{Config.API_URL}/health')
+    except Exception:
+        st.warning("le serveur n'est pas allumé !", icon="⚠️")
+
 def display_conversation():
     """"""
     with st.container(border=True, height=600):
@@ -40,7 +47,7 @@ def call_api(prompt):
             data = response.json()
             answer = data.get('response')
         else:
-            answer = 'Erreur de communication avec le serveur 😕'
+            answer = 'Erreur de communication avec le serveur'
     except Exception as e:
         answer = f'Erreur : {e}'
 
@@ -54,6 +61,8 @@ def reset_conversation():
 def main():
     """"""
     initialize_session_state()
+
+    test_api_health()
 
     st.header("Budget - le chatbot expert en comptabilité")
 
